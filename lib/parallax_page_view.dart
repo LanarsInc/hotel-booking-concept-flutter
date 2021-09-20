@@ -5,12 +5,12 @@ class ParallaxPageView extends StatefulWidget {
   final double viewportFraction;
   final int height;
   final List<ISlidingCard> data;
-  final void Function(ISlidingCard) onCardTap;
+  final void Function(ISlidingCard)? onCardTap;
 
   ParallaxPageView({
     this.viewportFraction = 1,
     this.height = 500,
-    this.data,
+    required this.data,
     this.onCardTap,
   });
 
@@ -18,23 +18,23 @@ class ParallaxPageView extends StatefulWidget {
   _ParallaxPageViewState createState() => _ParallaxPageViewState(
       viewportFraction: viewportFraction, height: height, data: data);
 
-  static RectTween createRectTween(Rect begin, Rect end) {
+  static RectTween createRectTween(Rect? begin, Rect? end) {
     return MaterialRectCenterArcTween(begin: begin, end: end);
   }
 }
 
 class _ParallaxPageViewState extends State<ParallaxPageView>
     with SingleTickerProviderStateMixin {
-  PageController pageController;
+  late PageController pageController;
   final double viewportFraction;
   final int height;
   final List<ISlidingCard> data;
-  final void Function(ISlidingCard) onCardTap;
+  final void Function(ISlidingCard)? onCardTap;
 
   _ParallaxPageViewState({
-    this.viewportFraction,
-    this.height,
-    this.data,
+    required this.viewportFraction,
+    required this.height,
+    required this.data,
     this.onCardTap,
   });
 
@@ -63,10 +63,8 @@ class _ParallaxPageViewState extends State<ParallaxPageView>
                 controller: pageController,
                 itemCount: widget.data.length,
                 itemBuilder: (context, index) {
-                  final page = (pageController.position.pixels == null ||
-                          (pageController.position.minScrollExtent != null &&
-                              pageController.position.maxScrollExtent != null)
-                      ? pageController.page
+                  final page = (pageController.page != null
+                      ? pageController.page!
                       : 0.0);
                   return SlidingCard(
                     height: widget.height,
@@ -77,7 +75,7 @@ class _ParallaxPageViewState extends State<ParallaxPageView>
                     offset: page - index,
                     position: index,
                     onCardTap: (position) =>
-                        widget.onCardTap(widget.data[position]),
+                        widget.onCardTap!(widget.data[position]),
                   );
                 },
               );

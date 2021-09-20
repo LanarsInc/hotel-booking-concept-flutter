@@ -6,8 +6,8 @@ import 'package:hotel_booking_concept/common/theme.dart';
 class BlurIcon extends StatelessWidget {
   final double width;
   final double height;
-  final EdgeInsets padding;
-  final Icon icon;
+  final EdgeInsets? padding;
+  final Icon? icon;
 
   BlurIcon({this.width = 32, this.height = 32, this.icon, this.padding});
 
@@ -18,7 +18,7 @@ class BlurIcon extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
         child: Padding(
-          padding: padding == null ? EdgeInsets.all(0) : padding,
+          padding: padding == null ? EdgeInsets.all(0) : padding!,
           child: Container(
             width: width,
             height: height,

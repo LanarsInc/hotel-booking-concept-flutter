@@ -13,7 +13,7 @@ class HotelConceptApp extends StatefulWidget {
 
 class _HotelConceptAppState extends State<HotelConceptApp>
     with TickerProviderStateMixin {
-  TabController _controller;
+  late TabController _controller;
   final List<Widget> tabBarScreens = [
     HomeScreen(),
     Container(color: Colors.lightBlueAccent),
@@ -77,7 +77,7 @@ class _HotelConceptAppState extends State<HotelConceptApp>
       icon: SvgPicture.asset(
         assetName,
         color: index == _controller.index
-            ? themeData.accentColor
+            ? themeData.colorScheme.secondary
             : themeData.primaryColorLight,
       ),
     );

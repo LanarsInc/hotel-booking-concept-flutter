@@ -94,9 +94,9 @@ class HotelCard implements ISlidingCard {
   final String imageAsset;
 
   HotelCard({
-    this.title,
-    this.subTitle,
-    this.imageAsset,
+    required this.title,
+    required this.subTitle,
+    required this.imageAsset,
   });
 
   @override
@@ -115,9 +115,9 @@ class EventCard implements ISlidingCard {
   final String imageAsset;
 
   EventCard({
-    this.title,
-    this.subTitle,
-    this.imageAsset,
+    required this.title,
+    required this.subTitle,
+    required this.imageAsset,
   });
 
   @override

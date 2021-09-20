@@ -13,25 +13,25 @@ class SlidingCard extends StatelessWidget {
   final String imageAssetName;
   final double offset;
   final int position;
-  final int height;
+  final int? height;
   final double scaleCoefficient;
   final double viewportFraction;
   final void Function(int) onCardTap;
 
   const SlidingCard({
-    Key key,
-    @required this.title,
-    @required this.subTitle,
-    @required this.imageAssetName,
-    this.offset,
-    this.position,
-    this.height,
-    this.onCardTap,
-    this.viewportFraction,
+    Key? key,
+    required this.title,
+    required this.subTitle,
+    required this.imageAssetName,
+    required this.offset,
+    required this.position,
+    required this.height,
+    required this.onCardTap,
+    required this.viewportFraction,
     this.scaleCoefficient = 0.0,
   }) : super(key: key);
 
-  static double kMaxRadius;
+  static double? kMaxRadius;
   static const opacityCurve =
       const Interval(0.0, 0.75, curve: Curves.fastOutSlowIn);
 
@@ -43,7 +43,7 @@ class SlidingCard extends StatelessWidget {
 
     final scale = max(0.9, offset.abs() + scaleCoefficient);
     double cardHeightCalc =
-        scaleCoefficient == 0 ? height.toDouble() : height / scale;
+        scaleCoefficient == 0 ? height!.toDouble() : height! / scale;
     return Align(
       alignment: Alignment.center,
       child: Container(
@@ -137,7 +137,7 @@ class SlidingCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCoverImage(int position, String imageAssetName, double offset) {
+  Widget _buildCoverImage(int? position, String? imageAssetName, double offset) {
     double imageBoundsCalc = viewportFraction / 0.6 * 1000;
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(16)),
