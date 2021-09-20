@@ -9,7 +9,7 @@ class SlidingBottomSheet extends StatefulWidget {
   final AnimationController controller;
   final double cornerRadius;
 
-  SlidingBottomSheet({this.controller, this.cornerRadius});
+  SlidingBottomSheet({required this.controller, required this.cornerRadius});
 
   @override
   _SlidingBottomSheetState createState() => _SlidingBottomSheetState(
@@ -21,7 +21,7 @@ class _SlidingBottomSheetState extends State<SlidingBottomSheet>
   final AnimationController bottomSheetController;
   final double cornerRadius;
 
-  _SlidingBottomSheetState({this.bottomSheetController, this.cornerRadius});
+  _SlidingBottomSheetState({required this.bottomSheetController, required this.cornerRadius});
 
   double get halfScreen => MediaQuery.of(context).size.height / 2;
 
@@ -41,7 +41,7 @@ class _SlidingBottomSheetState extends State<SlidingBottomSheet>
     super.dispose();
   }
 
-  double lerp(double min, double max) =>
+  double? lerp(double min, double max) =>
       lerpDouble(min, max, bottomSheetController.value);
 
   void _animateToInitial() {
@@ -57,7 +57,7 @@ class _SlidingBottomSheetState extends State<SlidingBottomSheet>
         final double topMargin = 20;
         double topMarginAnimatedValue = (1 - bottomSheetController.value) * topMargin * 2;
         final radiusAnimatedValue = Radius.circular(
-            (1 - bottomSheetController.value) * cornerRadius * 2);
+            (1 - bottomSheetController.value) * cornerRadius* 2);
         final double bottomSheetDragIndicatorWidth = 76;
         double bottomSheetDragIndicatorWidthUpdatedValue =
             (1 - bottomSheetController.value) *
@@ -100,7 +100,7 @@ class _SlidingBottomSheetState extends State<SlidingBottomSheet>
                         child: Container(
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            color: themeData.textTheme.display4.color,
+                            color: themeData.textTheme.headline1!.color,
                             borderRadius: BorderRadius.circular(3),
                           ),
                           height: 4,
@@ -120,7 +120,7 @@ class _SlidingBottomSheetState extends State<SlidingBottomSheet>
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
-    double dragSpeedToScreenSizeRatio = details.primaryDelta / fullScreen;
+    double dragSpeedToScreenSizeRatio = details.primaryDelta! / fullScreen;
     double bottomSheetUpdatedValue =
         bottomSheetController.value - dragSpeedToScreenSizeRatio;
 

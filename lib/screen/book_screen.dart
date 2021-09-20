@@ -20,7 +20,7 @@ class _BookScreenState extends State<BookScreen> {
     final themeData = HotelConceptThemeProvider.get();
     return Scaffold(
       body: Container(
-        color: themeData.accentColor,
+        color: themeData.colorScheme.secondary,
         child: Center(
           child: Text(
             "Booking successful",

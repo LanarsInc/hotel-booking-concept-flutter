@@ -5,7 +5,7 @@ import 'package:hotel_booking_concept/common/theme.dart';
 import 'package:hotel_booking_concept/parallax_page_view.dart';
 
 class BottomSheetContent extends StatelessWidget {
-  final AnimationController controller;
+  final AnimationController? controller;
 
   BottomSheetContent({this.controller});
 
@@ -14,7 +14,7 @@ class BottomSheetContent extends StatelessWidget {
     final themeData = HotelConceptThemeProvider.get();
     final double topPaddingMax = 44;
     final double topPaddingMin = MediaQuery.of(context).padding.top;
-    double topMarginAnimatedValue = (1 - controller.value) * topPaddingMax * 2;
+    double topMarginAnimatedValue = (1 - controller!.value) * topPaddingMax * 2;
     double topMarginUpdatedValue = topMarginAnimatedValue <= topPaddingMin ? topPaddingMin : topMarginAnimatedValue;
     return AnimatedContainer(
       duration: Duration(milliseconds: 200),
@@ -69,7 +69,7 @@ class BottomSheetContent extends StatelessWidget {
                               Icon(
                                 HotelBookingConcept.ic_location,
                                 size: 20,
-                                color: themeData.textTheme.display3.color,
+                                color: themeData.textTheme.headline2!.color,
                               ),
                               const SizedBox(width: 5),
                               Text("45 Curtain Road, London EC2A 3PT"),
@@ -109,7 +109,7 @@ class BottomSheetContent extends StatelessWidget {
                                   const SizedBox(height: 8),
                                   Text(
                                     "14:00 AM",
-                                    style: themeData.textTheme.display1,
+                                    style: themeData.textTheme.headline4,
                                   ),
                                 ],
                               ),
@@ -123,7 +123,7 @@ class BottomSheetContent extends StatelessWidget {
                                   const SizedBox(height: 8),
                                   Text(
                                     "12:00 AM",
-                                    style: themeData.textTheme.display1,
+                                    style: themeData.textTheme.headline4,
                                   ),
                                 ],
                               ),

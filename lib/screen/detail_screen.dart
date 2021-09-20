@@ -14,8 +14,8 @@ class DetailScreen extends StatefulWidget {
   final String imageAsset;
 
   DetailScreen({
-    this.heroTag,
-    this.imageAsset,
+    required this.heroTag,
+    required this.imageAsset,
   });
 
   @override
@@ -25,14 +25,14 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen>
     with SingleTickerProviderStateMixin {
-  final String heroTag;
-  final String imageAsset;
+  final String? heroTag;
+  final String? imageAsset;
   final double bottomSheetCornerRadius = 50;
 
   final Duration animationDuration = Duration(milliseconds: 600);
   final Duration delay = Duration(milliseconds: 300);
-  GlobalKey rectGetterKey = RectGetter.createGlobalKey();
-  Rect rect;
+  var rectGetterKey = RectGetter.createGlobalKey();
+  Rect? rect;
 
   _DetailScreenState({
     this.heroTag,
@@ -41,13 +41,13 @@ class _DetailScreenState extends State<DetailScreen>
 
   static double bookButtonBottomOffset = -60;
   double bookButtonBottom = bookButtonBottomOffset;
-  AnimationController _bottomSheetController;
+  late AnimationController _bottomSheetController;
 
   void _onTap() {
     setState(() => rect = RectGetter.getRectFromKey(rectGetterKey));
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       setState(() =>
-          rect = rect.inflate(1.3 * MediaQuery.of(context).size.longestSide));
+          rect = rect!.inflate(1.3 * MediaQuery.of(context).size.longestSide));
       Future.delayed(animationDuration + delay, _goToNextPage);
     });
   }
@@ -92,7 +92,7 @@ class _DetailScreenState extends State<DetailScreen>
             Container(),
             Hero(
               createRectTween: ParallaxPageView.createRectTween,
-              tag: heroTag,
+              tag: heroTag!,
               child: Container(
                 height: coverImageHeightCalc,
                 child: ClipRRect(
@@ -108,7 +108,7 @@ class _DetailScreenState extends State<DetailScreen>
                       child: PageView(
                         children: <Widget>[
                           Image.asset(
-                            imageAsset,
+                            imageAsset!,
                             fit: BoxFit.cover,
                           ),
                           Image.asset(
@@ -183,7 +183,7 @@ class _DetailScreenState extends State<DetailScreen>
                     height: 60,
                     width: 172,
                     decoration: BoxDecoration(
-                        color: themeData.accentColor,
+                        color: themeData.colorScheme.secondary,
                         borderRadius:
                             BorderRadius.only(topLeft: Radius.circular(50))),
                     child: Center(
@@ -209,14 +209,14 @@ class _DetailScreenState extends State<DetailScreen>
     }
     return AnimatedPositioned(
       duration: animationDuration,
-      left: rect.left,
-      right: MediaQuery.of(context).size.width - rect.right,
-      top: rect.top,
-      bottom: MediaQuery.of(context).size.height - rect.bottom,
+      left: rect!.left,
+      right: MediaQuery.of(context).size.width - rect!.right,
+      top: rect!.top,
+      bottom: MediaQuery.of(context).size.height - rect!.bottom,
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: themeData.accentColor,
+          color: themeData.colorScheme.secondary,
         ),
       ),
     );

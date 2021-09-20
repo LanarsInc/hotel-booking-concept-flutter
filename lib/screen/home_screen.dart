@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     const SizedBox(height: 12),
                     Text("Hello Alex,",
-                        style: themeData.textTheme.display2),
+                        style: themeData.textTheme.headline3),
                     const SizedBox(height: 8),
                     Text("Find your perfect places",
                         style: TextStyle(
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text("View all",
                             style: TextStyle(
                                 fontSize: 12,
-                                color: themeData.accentColor,
+                                color: themeData.colorScheme.secondary,
                                 fontWeight: FontWeight.w600)),
                       ],
                     ),
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             left: index == 0 ? 20 : 5, right: 5),
                         decoration: BoxDecoration(
                           color: index == checkedItem
-                              ? themeData.accentColor
+                              ? themeData.colorScheme.secondary
                               : themeData.unselectedWidgetColor,
                           borderRadius: BorderRadius.circular(4),
                         ),
@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: TextStyle(
                                   color: index == checkedItem
                                       ? Colors.white
-                                      : themeData.accentColor),
+                                      : themeData.colorScheme.secondary),
                             ),
                           ),
                         ),
@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Animation<double> secondaryAnimation) {
                         return AnimatedBuilder(
                             animation: animation,
-                            builder: (BuildContext context, Widget child) {
+                            builder: (BuildContext context, Widget? child) {
                               return DetailScreen(
                                 heroTag: "${hotel.cardTitle()}",
                                 imageAsset: hotel.cardImageAsset(),
@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text("View all",
                         style: TextStyle(
                             fontSize: 12,
-                            color: themeData.accentColor,
+                            color: themeData.colorScheme.secondary,
                             fontWeight: FontWeight.w600)),
                   ],
                 ),
@@ -184,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Animation<double> secondaryAnimation) {
                         return AnimatedBuilder(
                             animation: animation,
-                            builder: (BuildContext context, Widget child) {
+                            builder: (BuildContext context, Widget? child) {
                               return DetailScreen(
                                 heroTag: "${hotel.cardTitle()}",
                                 imageAsset: hotel.cardImageAsset(),
