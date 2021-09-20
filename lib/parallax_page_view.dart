@@ -63,9 +63,10 @@ class _ParallaxPageViewState extends State<ParallaxPageView>
                 controller: pageController,
                 itemCount: widget.data.length,
                 itemBuilder: (context, index) {
-                  final page = (pageController.page != null
-                      ? pageController.page!
-                      : 0.0);
+                  double page = 0.0;
+                  try {
+                    page = pageController.page!;
+                  } catch(e) {}
                   return SlidingCard(
                     height: widget.height,
                     viewportFraction: viewportFraction,
