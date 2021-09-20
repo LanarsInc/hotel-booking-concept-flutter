@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     const SizedBox(height: 12),
                     Text("Hello Alex,",
-                        style: themeData.textTheme.display2),
+                        style: themeData.textTheme.headline3),
                     const SizedBox(height: 8),
                     Text("Find your perfect places",
                         style: TextStyle(

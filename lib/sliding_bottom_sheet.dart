@@ -100,7 +100,7 @@ class _SlidingBottomSheetState extends State<SlidingBottomSheet>
                         child: Container(
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            color: themeData.textTheme.display4.color,
+                            color: themeData.textTheme.headline1.color,
                             borderRadius: BorderRadius.circular(3),
                           ),
                           height: 4,

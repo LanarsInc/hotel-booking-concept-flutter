@@ -15,17 +15,17 @@ class HotelConceptThemeProvider {
       scaffoldBackgroundColor: Colors.white,
       cardColor: Colors.white,
       textTheme: TextTheme(
-          display1: TextStyle(
+          headline4: TextStyle(
             color: Color(0x60717171),
           ),
-          display2: TextStyle(
+          headline3: TextStyle(
             fontSize: 20,
             color: Color(0xff7e848b),
           ),
-          display3: TextStyle(
+          headline2: TextStyle(
             color: Color(0xff2cac97),
           ),
-          display4: TextStyle(
+          headline1: TextStyle(
             color: Color(0xffededed),
           )),
     );
